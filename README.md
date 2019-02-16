@@ -12,20 +12,21 @@ This project serves as a combination of both the SampleCombat and the SampleNode
 
 # How to Compile
 Windows w/ MingW
-1. Make a build directory -> "mkdir build"
-1. in the project directory -> "cd build"
-2. compile using cmake -> "cmake -G "Unix Makefiles" .."
-3. after compilation finishes -> "make"
-4. A windows executable named "RUN.exe" should've been created
-5. "./Run"
+1. Make a build Directory -> "mkdir build"
+
+3. in the project directory -> "cd build"
+4. compile using cmake -> "cmake -G "Unix Makefiles" .."
+5. after compilation finishes -> "make"
+6. A windows executable named "RUN.exe" should've been created
+7. "./Run"
 
 Linux/Unix
 1. Make a build directory -> "mkdir build"
-1. in the project directory -> "cd build"
-2. compile using cmake -> "cmake .."
-3. after compilation finishes -> "make"
-4. executable file named "RUN" should've been created
-5. "./Run"
+3. in the project directory -> "cd build"
+4. compile using cmake -> "cmake .."
+5. after compilation finishes -> "make"
+6. executable file named "RUN" should've been created
+7. "./Run"
 
 
 # How to Play

@@ -20,6 +20,14 @@ Game::~Game() {
 void Game::init() {
 	m_mainParty = new PlayerParty();
 	m_endGame = false;
+	DIR *saveFolderDir = nullptr;
+	if((saveFolderDir = opendir("../SaveFolder/")) == nullptr) {
+		#if defined(_WIN32)
+			mkdir("../SaveFolder/");
+		#else
+			mkdir("../SaveFolder/", 0777);
+		#endif	
+	}
 	updateSaveFileList(); // -> can throw FileNotFound exception -> program exit
 	loadEntityRoster("../EntityDirectory/EntityList.txt"); // -> throw FileNotFoundException -> program exit
 }
