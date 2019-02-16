@@ -13,7 +13,6 @@ This project serves as a combination of both the SampleCombat and the SampleNode
 # How to Compile
 Windows w/ MingW
 1. Make a build Directory -> "mkdir build"
-
 3. in the project directory -> "cd build"
 4. compile using cmake -> "cmake -G "Unix Makefiles" .."
 5. after compilation finishes -> "make"
