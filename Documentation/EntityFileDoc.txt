@@ -1,0 +1,49 @@
+EntityFile Documentation:
+	EntityFiles contains a list of Entites that can be loaded in the program.
+	 Entities are predefined by the EntityList.txt and are loaded into the
+	 program at startup.
+
+
+	As of edition on branch v5:
+	>There can be any number of Entities that can be loaded into the program.
+	>Entites must be given {Entity_ID}'s that match the {Entity_ID == N + 1}
+	 of the EntityFile. You cannot create multiples of the same Entity_ID.
+
+	NOTE: The entire EntityList.txt file list all entities three lines each
+	 with no seperating lines. The first line will be the name. The second
+	 line will be the stat values. The third line will be the action values.
+
+	Entity text file syntax:
+	 Player Entity text file syntax:
+	 {Name};
+	 {Party_Index}:{Level}:{Health}:{Attack}:{Defense};
+	 {Action_value_1}:{Action_value_2}:...{Action_value_(N-1)}:{Action_Value_N}
+
+	Current Action Values available:
+    Format: Value "{Action_value}" -> "{Action_name}": {Description}
+
+    Value "1" -> "Strike": Perform basic action using Attack as primary modifier, with
+      level and defense as secondary modifier.
+
+    Value "2" -> "Bulward": Amplify defense value using Defense as primary modifier, with
+      level as secondary modifier
+
+    Value "3" -> "Cast": TEST_MOVE that matches formula of Value "1". To be changed in the
+      future.
+
+    Example content of Player Entity text file:
+    Monster
+    2:10:100:10:20;
+    1:2:3;
+
+    Translation of the text file above:
+    EntityName: Monster
+    Entity_ID = 2
+    Level = 10
+    Health = 100
+    Attack = 10
+    Defense = 20
+    ActionSet = {Strike,Bulward,Cast}
+
+  	Last Edit: Mon 11 Feb 2019 15:59
+

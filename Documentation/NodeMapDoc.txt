@@ -1,0 +1,85 @@
+NodeMap Documentation:
+	A NodeMap contains all the nodes to be created and used inside
+	 the NodeMap program. Each NodeMap files link entities to
+	 party values, then assigned those parties to the nodes in the map, then
+	 those nodes are linked together.
+
+	As of edition on branch v5:
+	>You must define the amount of parties that will be available
+	 on the map. SUBJECT TO CHANGE
+	>You must define the amount of nodes that will be available on the
+	 map. SUBJECT TO CHANGE
+	>You must link entities to party_ID's first before you create or
+	 link any nodes
+	>The max links that any node can have for previous_links == 4
+		SUBJECT TO CHANGE
+	>The max links that any node can have for next_links == 4
+		SUBJECT TO CHANGE
+	>The node with the Node_ID value of {N-1} will be considered
+	 the tail node and represent the end of the map.
+
+	NOTE: This is extremely subject to change as I acknowledge the
+	 pragmatic/cumbersome method of creating nodemaps. It future
+	 iterations, this documentation will reflect those changes. 
+
+	Instruction available:
+	Format: "Command": {Description}
+	> "link_party": This command takes a Entity_ID value, and assigns
+	 it to a Party_ID. What this command essentially does, it make a copy
+	 of that Entity with that specific Entity_ID, and adds it to the party
+	 of that Party_ID. The Party_ID is used to assign a node with a party that the player can combat with. Refer to the EntityList.txt for the full list of Entities to choose from.
+	 	Example: 4:link_party:2
+	 	>Takes the entity with Entity_ID of 4. Copy that entites information
+	 	 and assign it to Party_ID of 2. So the end result that a entity with an ID of 4 will be inside Party with an ID of 2.
+	> "create_node": This command takes a specific node index
+	 (from values 0 to {Node_total - 1}) and assigns it a specific party_ID
+	 that will be used to simulate a party of entities at that node.
+	 	Example: 3:create_node:2
+	 	>Takes the Node_ID of 3 and assigns it the Party_ID of 2. This
+	 	 Node will contain the party with the Entity of ID 4 if we are
+	 	 to follow the example from above.
+	> "link_node": This command takes two Node_ID's and link them together.
+	 However, the order of the Node_ID's do matter. The first value will
+	 always link forward, adding to the foward vector of that node. The 
+	 second value will link backwards, adding to the previous of that node.
+	 	Example: 3:link_node:4
+	 	>Node 3 will link to the Node 4. Thus, Node 3's foward vector will contain a link to Node 4, and Node 4's previous vector will contain a link to Node 3
+	 	of foward links will 
+	
+	NodeMap Syntax:
+	 {Number of Parties}
+	 {Number of Nodes}
+	 {Entity_ID}:link_party:{Party_ID}
+	 {Node_Index}:create_node:{Party_ID}
+	 {Node_Index}:link_node:{Node_Index}
+
+	Example NodeMap file:
+	3
+	4
+	3:link_party:0
+	4:link_party:0
+	4:link_party:0
+	1:link_party:1
+	2:link_party:1
+	3:link_party:2
+	0:create_node:0
+	1:create_node:0
+	2:create_node:1
+	3:create_node:2
+	0:link_node:1
+	1:link_node:2
+	2:link_node:0
+	1:link_node:3
+
+	Translation of NodeMap file above:
+	Total # of parties: 3
+	Total # of Nodes: 4
+	Party_ID 0 contains entities: {3 , 4 , 4}
+	Party_ID 1 contains entities: {1 , 1}
+	Party_ID 2 contains entities: {2}
+	Node 0 links to Node 1
+	Node 1 links to Node 2
+	Node 2 links to Node 0
+	Node 1 links to Node 3
+ 
+ Last Edit: Tues 12 Feb 2019 15:49

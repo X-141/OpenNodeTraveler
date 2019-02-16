@@ -1,0 +1,48 @@
+PlayerFile Documentation:
+  PlayerFiles contain a set of Entity information that coorelate to
+    entities defined by the player within the program. These files
+     are primarly created within the program and stored as raw txt
+     file to allow modification. 
+    
+    As of edition on branch v5:
+    >Max playerParty entities == 3
+    >PlayerFiles are within SaveFile{N} where N represents the index
+     value within the "saveFileFolder" vector to list the file as loadable
+    >Each SaveFile{N} contains {PlayerEntityName}.txt files which stores
+     the information for that specific entity. Note: the name of the 
+     {PlayerEntityName}.txt does not have to coorelate with the name
+     stored within the text file. 
+
+    Player Entity text file syntax:
+     {Name};
+     {Party_Index}:{Level}:{Health}:{Attack}:{Defense};
+     {Action_value_1}:{Action_value_2}:...{Action_value_(N-1)}:{Action_Value_N}
+
+    NOTE: Within the program, the values input by the user for the health stat
+    is multiplied by 10. Example If the player wanted 140hp they would need to
+    enter the value 14. 14*10 = 140hp. However, In the text file, this value is stored as a value that can be factored by ten. the value 140 would show up in the text file.
+
+    Current Action Values available:
+    Format: Value "{Action_value}" -> "{Action_name}": {Description}
+
+    > Value "1" -> "Strike": Perform basic action using Attack as primary modifier, withlevel and defense as secondary modifier.
+
+    > Value "2" -> "Bulward": Amplify defense value using Defense as primary modifier, with level as secondary modifier
+
+    > Value "3" -> "Cast": TEST_MOVE that matches formula of Value "1". To be changed in the future.
+
+    Example content of Player Entity text file:
+    Mesko
+    2:10:100:10:20;
+    1:2:3;
+
+    Translation of the text file above:
+    EntityName: Mesko
+    Entity_ID = 2
+    Level = 10
+    Health = 100
+    Attack = 10
+    Defense = 20
+    ActionSet = {Strike,Bulward,Cast}
+
+  Last Edit: Mon 11 Feb 2019 15:02

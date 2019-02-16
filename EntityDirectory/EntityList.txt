@@ -1,0 +1,27 @@
+Wingless Pigeon
+0:1:100:10:10;
+1:2:3;
+A Really Pissed Flower
+1:1:100:10:10;
+1:2:3;
+Lunar Sunflower
+2:1:100:10:10;
+1:2:3;
+Mischievous Miester
+3:1:100:10:10;
+1:2:3;
+Highly Perturbed Branch
+4:1:100:10:10;
+1:2:3;
+Gobling Moblin
+5:1:100:10:10;
+1:2:3;
+Alissia's Cat
+6:1:100:10:10;
+1:2:3;
+Unfiltered Mushroom
+7:1:100:10:10;
+1:2:3;
+Aromatic Saltine Cracker
+8:1:100:10:10;
+1:2:3;
