@@ -25,8 +25,9 @@ void Combat::startFight() {
 				//->if the opposing party member is dead, find a different target.
 				//->attack target and set the status of the opposing target to reflect
 		//repeat until break case is reached
-    //break case is reached once a party has achieved defeat (ex, if 
-    //m_party_1 -> getKOstatus() == true)
+    	//break case is reached once a party has achieved defeat (ex, if 
+    	//m_party_1 -> getKOstatus() == true)
+		
 		//break case will be achieved if any of the beginTurn functions return false
 		if (m_party_1->beginTurn(m_party_2))
 			break;

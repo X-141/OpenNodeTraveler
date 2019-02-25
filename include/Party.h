@@ -17,6 +17,8 @@
 */
 
 class Party {
+
+
 protected:
 	std::vector<Entity *> m_PartyRoster;
 	int m_PartyID;
@@ -31,6 +33,7 @@ public:
 	int& getPartyID();
 	bool& getPartyKOStatus() { return m_partyKO; }
 	bool beginTurn(Party *opposing_party);
+	void startPerformance(std::vector<Entity *> opposing_party);
 	void addEntity(Entity *entity);
 	void checkPartyStatus(); // updates the temporary states of each entity.
 							 // example if an entity has a defense boost and

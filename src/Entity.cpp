@@ -14,6 +14,7 @@ Entity::Entity(const std::string& t_name, std::vector<int>& t_s_val, std::vector
 	m_action = false;
 	// passes action vector containing values that coorelate to specific actions
 	setAction(t_a_val);
+	m_performance = Performance();
 }
 
 Entity::~Entity() { std::cout << "Deleted Entity" << std::endl; }
@@ -97,16 +98,26 @@ void Entity::Cast(Entity *t_opponent){
 // base version of startTurn allows the entity to perform random selection
 // as well as perform random actions
 void Entity::startTurn(std::vector<Entity *> opposing_party) {
+	
 		//Allow the entity to select a random target from the vector
 		//of opposing entities. -> basic vector default is 3
-	int enemy_selector = rand() % 3;
-	int action_selector = rand() % 2;
+	int enemy_choice = rand() % 3;
+	int action_choice = rand() % 2;
 		//If the main entity selects a opposing entity that is dead.
 		//continue to randomly choose until it finds a valid target.
-	while (!opposing_party.at(enemy_selector)->m_alive)
-		enemy_selector = rand() % 3;
-	std::cout << "Performer: " << m_name << std::endl;
-	(this->*m_actionList.at(action_selector).m_action)(opposing_party.at(enemy_selector));
+	while (!opposing_party.at(enemy_choice)->m_alive)
+		enemy_choice = rand() % 3;
+	
+	//m_performance = Performance(action_selector, enemy_selector, m_ID);
+	m_performance.m_action = action_choice;
+	m_performance.m_performer = m_ID;
+	m_performance.m_offender = enemy_choice;
+	//std::cout << "Performer: " << m_name << std::endl;
+	//(this->*m_actionList.at(action_selector).m_action)(opposing_party.at(enemy_selector));
+}
+
+void Entity::performAction(std::vector <Entity *> opposing_party){
+	(this->*m_actionList.at(m_performance.m_action).m_action)(opposing_party.at(m_performance.m_offender));
 }
 
 // update specific state values based on certain checks

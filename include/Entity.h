@@ -36,6 +36,14 @@ class Entity
 		void (Entity::*m_action)(Entity*);
 	};
 
+	struct Performance {
+		Performance(){}
+		Performance(int t_action, int t_performer, int t_offender)
+			:  m_action(t_action), m_performer(t_performer), m_offender(t_offender)
+			{}
+		int m_action, m_performer, m_offender;
+	};
+
 	protected:
 		int m_ID; // represents the number within the party it is stored
 		std::string m_name; 
@@ -44,6 +52,7 @@ class Entity
 		bool m_alive; // m_alive == represents if the entity is alive. 
 		bool m_action;	// m_action is used to verify
 		std::vector<Action> m_actionList; // maintains a vector of actions that the player can perform
+		Performance m_performance; // Performance is the action to be commited.
 	public:
 		Entity();
 		Entity(const std::string& t_name, std::vector<int>& t_s_val, std::vector<int>& t_a_val);	
@@ -66,6 +75,9 @@ class Entity
 		void setAlive(bool alive) { m_alive = alive; }
 		void setAction(bool action) { m_action = action; }
 		void setTempDefense(int defense) { m_tempDefense = defense; }
+
+		Performance getPerformance() { return m_performance; }
+		void performAction(std::vector<Entity *> opposing_party);
 	public:
 		// declarations of actions/functions used for combat instances
 		void damageHealth(int &t_total_damage);

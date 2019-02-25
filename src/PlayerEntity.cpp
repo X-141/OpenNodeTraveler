@@ -81,7 +81,11 @@ void PlayerEntity::startTurn(std::vector<Entity *> t_opp_party) {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	
 		}
 	}
-	std::cout << "Performer: " << m_name << std::endl;
-	(this->*m_actionList.at(action_choice - 1).m_action)(t_opp_party.at(enemy_choice - 1));
+	m_performance.m_action = action_choice - 1; //subtract 1 for the correct index
+	m_performance.m_performer = m_ID;
+	m_performance.m_offender = enemy_choice - 1;
+	//std::cout << "Performer: " << m_name << std::endl;
+	//(this->*m_actionList.at(action_choice - 1).m_action)(t_opp_party.at(enemy_choice - 1));
 	valid_input = true;
 }
+
