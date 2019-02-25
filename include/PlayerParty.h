@@ -13,5 +13,8 @@ public:
 	PlayerParty(const std::string& filename);
 	PlayerParty();
 	~PlayerParty();
+public:
+	bool beginTurn(Party *opposing_party);
+
 };
 

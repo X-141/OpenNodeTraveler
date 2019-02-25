@@ -37,11 +37,22 @@ class Entity
 	};
 
 	struct Performance {
-		Performance(){}
+		Performance(){
+			m_set = false;
+		}
 		Performance(int t_action, int t_performer, int t_offender)
 			:  m_action(t_action), m_performer(t_performer), m_offender(t_offender)
-			{}
+		{
+			m_set = false;
+		}
+		std::string getPerformanceStatus(){
+			if(m_set == false)
+				return " NOT READY";
+			return " READY -> " + m_action_name + " -> " + m_offender_name;
+		}
+		std::string m_action_name, m_offender_name;
 		int m_action, m_performer, m_offender;
+		bool m_set;
 	};
 
 	protected:

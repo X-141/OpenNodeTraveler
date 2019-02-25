@@ -266,7 +266,7 @@ void Game::loadNodeMap() {
 			}
 		}
 		else if (command == LINK_PARTY) {
-			if ((m_entitySet.at(value_1) == NULL)) {
+			if (m_entitySet.at(value_1) == NULL) {
 				std::cout << "flag Entity does not exist" << std::endl;
 			} else if ((value_2 > m_currentNodeMap->getPartyCardinality()) || (value_2 < 0)) {
 				std::cout << "No parties in that index. Out of bounds" << std::endl;

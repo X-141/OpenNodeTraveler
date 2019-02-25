@@ -31,8 +31,10 @@ bool Party::beginTurn(Party *opposing_party) {
 
 void Party::startPerformance(std::vector<Entity*> opposing_party){
 	for(Entity *entity : m_PartyRoster){
-		std::cout << "Peformer: " << entity->getName() << std::endl;
-		entity->performAction(opposing_party);
+		if(entity->getPerformance().m_set == true){
+			std::cout << "Peformer: " << entity->getName() << std::endl;
+			entity->performAction(opposing_party);
+		}
 	}
 }	
 

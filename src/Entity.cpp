@@ -98,7 +98,6 @@ void Entity::Cast(Entity *t_opponent){
 // base version of startTurn allows the entity to perform random selection
 // as well as perform random actions
 void Entity::startTurn(std::vector<Entity *> opposing_party) {
-	
 		//Allow the entity to select a random target from the vector
 		//of opposing entities. -> basic vector default is 3
 	int enemy_choice = rand() % 3;
@@ -109,15 +108,19 @@ void Entity::startTurn(std::vector<Entity *> opposing_party) {
 		enemy_choice = rand() % 3;
 	
 	//m_performance = Performance(action_selector, enemy_selector, m_ID);
+	m_performance.m_action_name = m_actionList.at(action_choice).m_actionName;
 	m_performance.m_action = action_choice;
 	m_performance.m_performer = m_ID;
 	m_performance.m_offender = enemy_choice;
+	m_performance.m_offender_name = opposing_party.at(enemy_choice)->getName();
+	m_performance.m_set = true;
 	//std::cout << "Performer: " << m_name << std::endl;
 	//(this->*m_actionList.at(action_selector).m_action)(opposing_party.at(enemy_selector));
 }
 
 void Entity::performAction(std::vector <Entity *> opposing_party){
 	(this->*m_actionList.at(m_performance.m_action).m_action)(opposing_party.at(m_performance.m_offender));
+	m_performance.m_set = false;
 }
 
 // update specific state values based on certain checks
