@@ -45,7 +45,7 @@ class Entity
 		{
 			m_set = false;
 		}
-		std::string getPerformanceStatus(){
+		std::string getPerfStatus(){
 			if(m_set == false)
 				return " NOT READY";
 			return " READY -> " + m_action_name + " -> " + m_offender_name;
@@ -87,7 +87,7 @@ class Entity
 		void setAction(bool action) { m_action = action; }
 		void setTempDefense(int defense) { m_tempDefense = defense; }
 
-		Performance getPerformance() { return m_performance; }
+		Performance getPerf() { return m_performance; }
 		void performAction(std::vector<Entity *> opposing_party);
 	public:
 		// declarations of actions/functions used for combat instances

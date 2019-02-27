@@ -44,7 +44,6 @@ void Entity::setAction(std::vector<int> t_a_val){
 	}
 }
 
-
 int Entity::calculateAttack() {
 	return (m_level * 1.5) + (m_attack * 3.5);
 }
@@ -114,8 +113,6 @@ void Entity::startTurn(std::vector<Entity *> opposing_party) {
 	m_performance.m_offender = enemy_choice;
 	m_performance.m_offender_name = opposing_party.at(enemy_choice)->getName();
 	m_performance.m_set = true;
-	//std::cout << "Performer: " << m_name << std::endl;
-	//(this->*m_actionList.at(action_selector).m_action)(opposing_party.at(enemy_selector));
 }
 
 void Entity::performAction(std::vector <Entity *> opposing_party){

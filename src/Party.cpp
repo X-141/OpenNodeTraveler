@@ -16,34 +16,24 @@ bool Party::beginTurn(Party *opposing_party) {
 		if (current_members->getAlive()) {
 			current_members->startTurn(opposing_party->getPartyRoster());
 			m_performance_sequence.push_back(current_members);
-			//opposing_party->checkPartyStatus();
 		}
-		if (opposing_party->getPartyKOStatus())
-			return opposing_party->getPartyKOStatus();
 	}
 	startPerformance(opposing_party->getPartyRoster()); //this will perform all the actions the player wishes to
 														//commit
 	//After fighting the opposing team, check the status to flag whether or not
 	//they have been defeated
+	opposing_party->checkPartyStatus();
 	return opposing_party->getPartyKOStatus();
 	//party status will return a boolean value to where it was called. If the value
 	//returned is true, then combat will stop. If it returns false, it will continue.
 }
 
 void Party::startPerformance(std::vector<Entity*> opposing_party){
-	Entity *performer = nullptr;
 	while(!m_performance_sequence.empty()){
 		std::cout << "Performer: " << m_performance_sequence.front()->getName() << std::endl;
 		m_performance_sequence.front()->performAction(opposing_party);
 		m_performance_sequence.pop_front();
 	}
-
-	// for(Entity *entity : m_PartyRoster){
-	// 	if(entity->getPerformance().m_set == true){
-	// 		std::cout << "Peformer: " << entity->getName() << std::endl;
-	// 		entity->performAction(opposing_party);
-	// 	}
-	// }
 }	
 
 void Party::addEntity(Entity * entity){

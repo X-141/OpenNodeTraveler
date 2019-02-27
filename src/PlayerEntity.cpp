@@ -1,17 +1,13 @@
 #include "PlayerEntity.h"
 
 PlayerEntity::PlayerEntity(const std::string& t_name, std::vector<int> t_s_val, std::vector<int> t_a_val)
-	:Entity(t_name, t_s_val, t_a_val)
-{
-
-}
+	:Entity(t_name, t_s_val, t_a_val){}
 
 // Start turn is based on the startTurn virtual function
 // This function allows the user to pick the entity to attack
 // in combat as well as which action to perform
 void PlayerEntity::startTurn(std::vector<Entity *> t_opp_party) {
 	std::cout << "Current Player turn: " << m_name << std::endl;
-	
 	bool valid_input = false;
 	int enemy_choice = 0;
 	int action_choice = 0;
@@ -53,14 +49,14 @@ void PlayerEntity::startTurn(std::vector<Entity *> t_opp_party) {
 				if (enemy_choice > static_cast<int>(t_opp_party.size())+2) {
 					throw std::out_of_range("Invalid enemy choice");
 				}
-				if(enemy_choice == t_opp_party.size()+1){
+				if(enemy_choice == t_opp_party.size()+1){ // display enemy character HP
 					for(Entity *entity : t_opp_party)
 						std::cout << entity->getHealth() << " -> " << entity->getName() << std::endl;
 					valid_choice2 = false;
-				} else if(enemy_choice == t_opp_party.size()+2){
+				} else if(enemy_choice == t_opp_party.size()+2){ // This allows the player to selected a different action
 					valid_choice = false;
 					valid_choice2 = true;
-				} else if (!t_opp_party.at(enemy_choice-1)->getAlive()){
+				} else if (!t_opp_party.at(enemy_choice-1)->getAlive()){ // this prevents the player from selecting a dead enemy
 					std::cout << "That opponent is not alive!" << std::endl;
 					std::cin.clear();
 				} else {
