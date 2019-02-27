@@ -1,7 +1,8 @@
 #pragma once
 
 #include <fstream>
-#include <queue>
+
+#include <deque>
 #include "PlayerEntity.h"
 
 
@@ -24,12 +25,12 @@ protected:
 	int m_PartyID;
 	bool m_partyKO; // false == party is still alive
 					// true == party is dead
+	std::deque<Entity *> m_performance_sequence;
 public:
 	Party() {}
 	~Party();
 public:
 	std::vector<Entity *>& getPartyRoster();
-	std::queue<void(*)()>& getActionList();
 	int& getPartyID();
 	bool& getPartyKOStatus() { return m_partyKO; }
 	virtual bool beginTurn(Party *opposing_party);

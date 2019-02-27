@@ -46,11 +46,11 @@ void Entity::setAction(std::vector<int> t_a_val){
 
 
 int Entity::calculateAttack() {
-	return (m_level * .5) + (m_attack * 1.5);
+	return (m_level * 1.5) + (m_attack * 3.5);
 }
 
 int Entity::calculateDefense() {
-	return (m_level * 0.5) + (m_tempDefense + (m_attack * 0.25));
+	return (m_level * 1.5) + (m_tempDefense * 2 + (m_attack * .5));
 }
 
 void Entity::damageHealth(int &total_damage) {
